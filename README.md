@@ -150,7 +150,7 @@ print(generated_code)
 
 ## Acknowledgements
 
-The Lemur project is a collaborative effort between [XLang Lab](https://www.xlang.ai/) and [Salesforce Research](https://www.salesforceairesearch.com/). We thank the following institutions for their gift support:
+The Lemur project is an open collaborative research effort effort between [XLang Lab](https://www.xlang.ai/) and [Salesforce Research](https://www.salesforceairesearch.com/). We thank the following institutions for their gift support:
 
 <div align="center">
 
