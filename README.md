@@ -1,4 +1,4 @@
-# Lemur: The State-of-the-art Open Pretrained Large Language Models Balancing Text and Code Intelligence
+# Lemur: The State-of-the-art Open Pretrained Large Language Models Balancing Text and Code Capabilities
 
 <p align="center">
   <img src="https://huggingface.co/datasets/OpenLemur/assets/resolve/main/lemur_icon.png" width="300" height="300" alt="Lemur">
@@ -6,7 +6,7 @@
    <a href="https://huggingface.co/OpenLemur" target="_blank">
       <img alt="Models" src="https://img.shields.io/badge/🤗-Models-blue" />
    </a>
-   <a href="https://xlang.ai/doc" target="_blank">
+   <a href="https://xlang.ai/blog/OpenLemur" target="_blank">
       <img alt="Blog" src="https://img.shields.io/badge/📖-Blog-red" />
    </a>
   <a href="https://xlang.ai" target="_blank">
