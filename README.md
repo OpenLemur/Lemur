@@ -12,11 +12,11 @@
   <a href="https://xlang.ai" target="_blank">
       <img alt="Paper" src="https://img.shields.io/badge/📜-Paper(Coming soon)-purple" />
    </a>
-   <a href="https://github.com/OpenLemur/lemur-v1" target="_blank">
-      <img alt="Stars" src="https://img.shields.io/github/stars/OpenLemur/lemur-v1?style=social" />
+   <a href="https://github.com/OpenLemur/lemur" target="_blank">
+      <img alt="Stars" src="https://img.shields.io/github/stars/OpenLemur/lemur?style=social" />
    </a>
-   <a href="https://github.com/OpenLemur/lemur-v1/issues" target="_blank">
-      <img alt="Open Issues" src="https://img.shields.io/github/issues-raw/OpenLemur/lemur-v1" />
+   <a href="https://github.com/OpenLemur/lemur/issues" target="_blank">
+      <img alt="Open Issues" src="https://img.shields.io/github/issues-raw/OpenLemur/lemur" />
    </a>
    <a href="https://twitter.com/XLangAI" target="_blank">
       <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/XLangAI" />
