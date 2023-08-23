@@ -1,0 +1,14 @@
+accelerate>=0.21.0
+bitsandbytes>=0.41.1
+datasets
+deepspeed>=0.10.0
+einops
+evaluate>=0.4.0
+nltk
+peft>=0.4.0
+protobuf
+scipy
+sentencepiece
+tokenizers>=0.13.3
+transformers>=4.31.0
+torch
