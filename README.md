@@ -134,14 +134,26 @@ tokenizer = AutoTokenizer.from_pretrained("OpenLemur/lemur-70b-chat-v1")
 model = AutoModelForCausalLM.from_pretrained("OpenLemur/lemur-70b-chat-v1", device_map="auto", load_in_8bit=True)
 
 # Text Generation Example
-prompt = "What's lemur's favorite fruit?"
+prompt = """<|im_start|>system
+You are a helpful, respectful, and honest assistant.
+<|im_end|>
+<|im_start|>user
+What's a lemur's favorite fruit?<|im_end|>
+<|im_start|>assistant
+"""
 input = tokenizer(prompt, return_tensors="pt")
 output = model.generate(**input, max_length=50, num_return_sequences=1)
 generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
 print(generated_text)
 
 # Code Generation Example
-prompt = "Write a Python function to merge two sorted lists into one sorted list without using any built-in sort functions."
+prompt = """<|im_start|>system
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+<|im_end|>
+<|im_start|>user
+Write a Python function to merge two sorted lists into one sorted list without using any built-in sort functions.<|im_end|>
+<|im_start|>assistant
+"""
 input = tokenizer(prompt, return_tensors="pt")
 output = model.generate(**input, max_length=200, num_return_sequences=1)
 generated_code = tokenizer.decode(output[0], skip_special_tokens=True)
