@@ -6,7 +6,7 @@
    <a href="https://huggingface.co/OpenLemur" target="_blank">
       <img alt="Models" src="https://img.shields.io/badge/🤗-Models-blue" />
    </a>
-   <a href="https://xlang.ai/blog/OpenLemur" target="_blank">
+   <a href="https://xlang.ai/blog/openlemur" target="_blank">
       <img alt="Blog" src="https://img.shields.io/badge/📖-Blog-red" />
    </a>
   <a href="https://xlang.ai" target="_blank">
