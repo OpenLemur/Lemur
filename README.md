@@ -24,8 +24,8 @@
    <a href="https://join.slack.com/t/xlanggroup/shared_invite/zt-20zb8hxas-eKSGJrbzHiPmrADCDX3_rQ" target="_blank">
       <img alt="Join Slack" src="https://img.shields.io/badge/Slack-join-blueviolet?logo=slack&amp" />
    </a>
-   <a href="https://discord.gg/qyEh479F" target="_blank">
-      <img alt="Discord" src="https://dcbadge.vercel.app/api/server/qyEh479F?compact=true&style=flat" />
+   <a href="https://discord.gg/ncjujmva" target="_blank">
+      <img alt="Discord" src="https://dcbadge.vercel.app/api/server/ncjujmva?compact=true&style=flat" />
    </a>
 
 Open large language models (LLMs) have traditionally been tailored for either textual or code-related tasks, with limited ability to effectively balance both. However, many complex language applications, particularly language model agents, demand systems with a multifaceted skill set encompassing understanding, reasoning, planning, coding, and context grounding. 
