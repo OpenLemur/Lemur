@@ -28,7 +28,7 @@
       <img alt="Discord" src="https://dcbadge.vercel.app/api/server/ncjujmva?compact=true&style=flat" />
    </a>
 
-Open large language models (LLMs) have traditionally been tailored for either textual or code-related tasks, with limited ability to effectively balance both. However, many complex language applications, particularly language model agents, demand systems with a multifaceted skill set encompassing understanding, reasoning, planning, coding, and context grounding. 
+Open large language models (LLMs) have traditionally been tailored for either textual or code-related tasks, with limited ability to effectively balance both. However, many complex language applications, particularly language model agents, demand systems with a multifaceted skill set encompassing understanding, reasoning, planning, coding, and context grounding.
 
 In this work, we introduce **Lemur-70B-v1** and **Lemur-70B-chat-v1**, the state-of-the-art open pretrained and supervised fine-tuned large language models balancing text and code intelligence.
 
@@ -158,6 +158,29 @@ input = tokenizer(prompt, return_tensors="pt")
 output = model.generate(**input, max_length=200, num_return_sequences=1)
 generated_code = tokenizer.decode(output[0], skip_special_tokens=True)
 print(generated_code)
+```
+
+## Evaluation
+We build the evaluation suite based on [open-instruct](https://github.com/allenai/open-instruct).
+### Setup
+```bash
+conda create -n xchat python=3.10
+conda activate xchat
+conda install pytorch==2.0.1 pytorch-cuda=11.8 -c pytorch -c nvidia
+conda install -c "nvidia/label/cuda-11.8.0" cuda-nvcc
+```
+Then, install the `xchat` package:
+
+```bash
+git clone git@github.com:OpenLemur/Lemur.git
+cd Lemur
+pip install -e .
+```
+
+### Run Evaluation
+
+```bash
+bash scripts/eval/gsm.sh
 ```
 
 ## Acknowledgements

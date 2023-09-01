@@ -10,5 +10,5 @@ protobuf
 scipy
 sentencepiece
 tokenizers>=0.13.3
-transformers>=4.31.0
 torch
+transformers>=4.31.0
