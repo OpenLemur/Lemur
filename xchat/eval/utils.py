@@ -46,8 +46,10 @@ def generate_completions(
 
     num_return_sequences = generation_kwargs.get("num_return_sequences", 1)
 
+    # if do_sample=True then set default temperature to 0.0
     # by default, we use temperature 0.0 to get the most likely completion.
-    generate_temperature = generation_kwargs.pop("temperature", 0.0)
+    if generation_kwargs.get("do_sample", False):
+        generate_temperature = generation_kwargs.get("temperature", 0.0)
 
     for i in range(0, len(prompts), batch_size):
         batch_prompts = prompts[i : i + batch_size]
@@ -60,17 +62,20 @@ def generate_completions(
             attention_mask = attention_mask.cuda()
 
         # Set temperature for each batch if assigned
-        assigned_temperature = (
-            assigned_temperatures[i : i + batch_size][0] if assigned_temperatures is not None else None
-        )
-        temperature = assigned_temperature if assigned_temperature is not None else generate_temperature
+        if generation_kwargs.get("do_sample", False):
+            assigned_temperature = (
+                assigned_temperatures[i : i + batch_size][0] if assigned_temperatures is not None else None
+            )
+            # temperature = assigned_temperature if assigned_temperature is not None else generate_temperature
+            generation_kwargs["temperature"] = (
+                assigned_temperature if assigned_temperature is not None else generate_temperature
+            )
 
         try:
             batch_outputs = model.generate(
                 input_ids=batch_input_ids,
                 attention_mask=attention_mask,
                 stopping_criteria=[KeyWordsCriteria(stop_id_sequences)] if stop_id_sequences else None,
-                temperature=temperature,
                 **generation_kwargs,
             )
 

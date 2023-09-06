@@ -85,6 +85,8 @@ def main(args):
                 "The assistant gives helpful, detailed, and polite answers to the user's questions. "
                 "USER: " + prompt_prefix + "Question: " + example["question"].strip() + "\nASSISTANT: " + "Answer:"
             )
+        elif args.chat_format == "codellama-instruct":
+            prompt = "[INST] " + prompt_prefix + "Question: " + example["question"].strip() + "[/INST]" + "Answer:"
         elif args.chat_format == "llama-2-chat":
             system_message = """You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your \
 answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure\
@@ -125,6 +127,11 @@ correct. If you don't know the answer to a question, please don't share false in
             ]
         elif args.chat_format == "vicuna" or args.chat_format == "llama-2-chat":
             stop_id_sequences = [[tokenizer.encode("</s>", add_special_tokens=False)[-1]]]
+        elif args.chat_format == "codellama-instruct":
+            stop_id_sequences = [
+                [tokenizer.encode("[INST]", add_special_tokens=False)[-1]],
+                [tokenizer.encode("</s>", add_special_tokens=False)[-1]],
+            ]
         else:
             # get the last token because the tokenizer may add space tokens at the start.
             stop_id_sequences = [[tokenizer.encode("\n", add_special_tokens=False)[-1]]]
@@ -212,7 +219,7 @@ if __name__ == "__main__":
         "--chat_format",
         type=str,
         default=None,
-        choices=["tulu", "lemur", "wizardcoder", "vicuna", "llama-2-chat"],
+        choices=["tulu", "lemur", "wizardcoder", "vicuna", "llama-2-chat", "codellama-instruct"],
         help="if given, we will use the chat format to generate the predictions.",
     )
     args = parser.parse_args()

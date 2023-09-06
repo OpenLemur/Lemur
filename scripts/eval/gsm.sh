@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 
 DATA_DIR=data/eval/gsm
 
@@ -45,3 +45,14 @@ python -m xchat.eval.gsm.run_eval \
 #     --n_shot 8 \
 #     --chat_format vicuna \
 #     --load_in_8bit
+
+# MODEL_DIR=codellama/CodeLlama-34b-Instruct-hf
+# OUTPUT_DIR=results/gsm/codellama-34b-instruct-hf
+# python -m xchat.eval.gsm.run_eval \
+#     --data_dir $DATA_DIR \
+#     --save_dir $OUTPUT_DIR \
+#     --model $MODEL_DIR \
+#     --tokenizer $MODEL_DIR \
+#     --eval_batch_size 48 \
+#     --n_shot 8 \
+#     --chat_format codellama-instruct

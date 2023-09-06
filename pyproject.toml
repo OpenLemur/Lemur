@@ -23,7 +23,8 @@ dependencies = [
     "scipy",
     "sentencepiece",
     "tokenizers>=0.13.3",
-    "transformers>=4.32.1",
+    # "transformers>=4.32.1",
+    "transformers@git+https://github.com/huggingface/transformers.git@172f42c512e1bf32554ef910fe82f07916b4d4af",
     "wandb",
     "openai"
 ]

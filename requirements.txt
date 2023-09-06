@@ -4,6 +4,8 @@ datasets
 deepspeed>=0.10.0
 einops
 evaluate>=0.4.0
+# transformers>=4.32.1
+git+https://github.com/huggingface/transformers.git@172f42c512e1bf32554ef910fe82f07916b4d4af
 nltk
 peft>=0.4.0
 protobuf
@@ -11,4 +13,3 @@ scipy
 sentencepiece
 tokenizers>=0.13.3
 torch
-transformers>=4.31.0
