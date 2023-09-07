@@ -40,6 +40,14 @@ def generate_completions(
     assigned_temperatures=None,
     **generation_kwargs,
 ):
+    # sort prompts by length to reduce the number of padding tokens
+    prompt_lengths = [len(prompt) for prompt in prompts]
+    sorted_prompt_indices = sorted(range(len(prompt_lengths)), key=lambda k: prompt_lengths[k])
+    prompts = [prompts[i] for i in sorted_prompt_indices]
+
+    if assigned_temperatures is not None:
+        assigned_temperatures = [assigned_temperatures[i] for i in sorted_prompt_indices]
+
     generations = []
     if not disable_tqdm:
         progress = tqdm.tqdm(total=len(prompts), desc="Generating Completions")
@@ -123,6 +131,9 @@ def generate_completions(
     assert (
         len(generations) == len(prompts) * num_return_sequences
     ), "number of generations should be equal to number of prompts * num_return_sequences"
+
+    generations = sorted(zip(sorted_prompt_indices, generations), key=lambda x: x[0])
+    generations = [generation for _, generation in generations]
     return generations
 
 
@@ -150,7 +161,7 @@ def get_next_word_predictions(
             batch_input_ids = batch_input_ids.cuda()
             attention_mask = attention_mask.cuda()
 
-        batch_logits = model(batch_input_ids, attention_mask).logits[:, -1, :]
+        batch_logits = model(input_ids=batch_input_ids, attention_mask=attention_mask).logits[:, -1, :]
         if candidate_token_ids is not None:
             batch_logits = batch_logits[:, candidate_token_ids]
         batch_probs = torch.softmax(batch_logits, dim=-1)
@@ -192,9 +203,8 @@ def load_hf_lm_and_tokenizer(
     tokenizer.padding_side = padding_side
     # set pad token to eos token if pad token is not set (as is the case for llama models)
     if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-        tokenizer.pad_token_id = tokenizer.eos_token_id
-
+        tokenizer.pad_token = tokenizer.unk_token
+        tokenizer.pad_token_id = tokenizer.unk_token_id
     if gptq_model:
         from auto_gptq import AutoGPTQForCausalLM
 
