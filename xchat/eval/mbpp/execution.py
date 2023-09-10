@@ -10,7 +10,9 @@ import tempfile
 from typing import Callable, Dict, Optional
 
 
-def check_correctness(problem: Dict, completion: str, timeout: float, completion_id: Optional[int] = None) -> Dict:
+def check_correctness(
+    task: str, problem: Dict, completion: str, timeout: float, completion_id: Optional[int] = None
+) -> Dict:
     """
     Evaluates the functional correctness of a completion by running the test
     suite provided in the problem.
@@ -33,12 +35,15 @@ def check_correctness(problem: Dict, completion: str, timeout: float, completion
             reliability_guard()
 
             # Construct the check program and run it.
-            # check_program = (
-            #     problem["prompt"] + completion + "\n" +
-            #     problem["test"] + "\n" +
-            #     f"check({problem['entry_point']})"
-            # )
-            check_program = completion + "\n" + problem["reference"]
+            if task == "humaneval":
+                check_program = (
+                    problem["prompt"] + completion + "\n" + problem["test"] + "\n" + f"check({problem['entry_point']})"
+                )
+            elif task == "mbpp":
+                check_program = completion + "\n" + problem["reference"]
+            else:
+                raise ValueError(f"Unknown task: {task}")
+
             try:
                 exec_globals = {}
                 with swallow_io(), time_limit(timeout):

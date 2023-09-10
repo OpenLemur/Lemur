@@ -36,6 +36,7 @@ def estimate_pass_at_k(
 
 
 def evaluate_functional_correctness(
+    task: str,
     sample_file: str,
     k: List[int] = [1, 10, 100],
     n_workers: int = 4,
@@ -61,7 +62,7 @@ def evaluate_functional_correctness(
         for sample in tqdm.tqdm(stream_jsonl(sample_file)):
             task_id = sample["task_id"]
             completion = sample["completion"]
-            args = (problems[task_id], completion, timeout, completion_id[task_id])
+            args = (task, problems[task_id], completion, timeout, completion_id[task_id])
             future = executor.submit(check_correctness, *args)
             futures.append(future)
             completion_id[task_id] += 1
