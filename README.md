@@ -161,7 +161,19 @@ print(generated_code)
 ```
 
 ## Evaluation
-We build the evaluation suite based on [open-instruct](https://github.com/allenai/open-instruct).
+We build the evaluation suite based on [open-instruct](https://github.com/allenai/open-instruct). We will keep updating more tasks and models.
+
+### Tasks Table
+
+|                               | MMLU | BBH | GSM8K | HumanEval | MBPP | DS-1000 | MultiPL-E |
+|-------------------------------|------|-----|-------|-----------|------|---------|-----------|
+| Llama-2-{7,13,70}b            | ✅    | ✅   | ✅     | ✅         | ✅    | 🚧       | 🚧         |
+| CodeLlama-{7,13,34}b          | ✅    | ✅   | ✅     | ✅         | ✅    | 🚧       | 🚧         |
+| Lemur-70b-v1                  | ✅    | ✅   | ✅     | ✅         | ✅    | 🚧       | 🚧         |
+| Llama-2-{7,13,70}b-chat       | ✅    |     | ✅     | ✅         | ✅    | 🚧       | 🚧         |
+| CodeLlama-{7,13,34}b-Instruct | ✅    |     | ✅     | ✅         | ✅    | 🚧       | 🚧         |
+| Lemur-70b-chat-v1             | ✅    |     | ✅     | ✅         | ✅    | 🚧       | 🚧         |
+
 ### Setup
 ```bash
 conda create -n xchat python=3.10
@@ -178,6 +190,7 @@ pip install -e .
 ```
 
 ### Run Evaluation
+Please find the evaluation scripts in `scripts/eval`. For example, to run the GSM8K evaluation, update the arguments in `scripts/eval/gsm.sh` and run:
 
 ```bash
 bash scripts/eval/gsm.sh
