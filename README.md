@@ -1,4 +1,4 @@
-# Lemur: The State-of-the-art Open Pretrained Large Language Models Balancing Text and Code Capabilities
+# Lemur: Open Foundation Models for Language Agents
 
 <p align="center">
   <img src="https://huggingface.co/datasets/OpenLemur/assets/resolve/main/lemur_icon.png" width="300" height="300" alt="Lemur">
