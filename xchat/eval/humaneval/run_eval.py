@@ -22,7 +22,7 @@ def main(args):
         test_data = random.sample(test_data, args.max_num_examples)
     print("Number of examples:", len(test_data))
     promptclass = getprompts(args.chat_format)
-    prompts = [promptclass.getPrompt(example['prompt']) for example in test_data]
+    prompts = [promptclass.getPrompt(example["prompt"]) for example in test_data]
 
     if args.model_name_or_path:
         print("Loading model and tokenizer...")
@@ -106,7 +106,7 @@ def main(args):
                 "task_id": example["task_id"],
                 "prompt": example["prompt"],
                 "completion": processed_output,
-                "raw_response": output
+                "raw_response": output,
             }
         )
 

@@ -1,7 +1,7 @@
 # Lemur: Open Foundation Models for Language Agents
 
 <p align="center">
-  <img src="https://huggingface.co/datasets/OpenLemur/assets/resolve/main/lemur_icon.png" width="300" height="300" alt="Lemur">
+  <img src="https://i.imgur.com/Tga8kHW.jpeg" alt="Lemur">
 </p>
    <a href="https://huggingface.co/OpenLemur" target="_blank">
       <img alt="Models" src="https://img.shields.io/badge/🤗-Models-blue" />
@@ -28,31 +28,51 @@
       <img alt="Discord" src="https://dcbadge.vercel.app/api/server/ncjujmva?compact=true&style=flat" />
    </a>
 
-Open large language models (LLMs) have traditionally been tailored for either textual or code-related tasks, with limited ability to effectively balance both. However, many complex language applications, particularly language model agents, demand systems with a multifaceted skill set encompassing understanding, reasoning, planning, coding, and context grounding.
-
-In this work, we introduce **Lemur-70B-v1** and **Lemur-70B-chat-v1**, the state-of-the-art open pretrained and supervised fine-tuned large language models balancing text and code intelligence.
+Lemur is an openly accessible language model optimized for both natural language and coding capabilities to serve as the backbone of versatile language agents.
+As language models continue to evolve from conversational chatbots to functional agents that can act in the real world, they need both strong language understanding and the ability to execute actions. Lemur balances natural language and coding skills to enable agents to follow instructions, reason for tasks, and take grounded actions.
 
 <div align="center">
-  <img src="https://huggingface.co/datasets/OpenLemur/assets/resolve/main/lemur_performance.png">
+  <img src="./assets/interface.png">
 </div>
 
-This release includes model weights and starting code for using Lemur models, and we will continue to update more models and code.
-
-This repository is a minimal example to load Lemur models, run inference, and be initialized for further finetuning. Check [huggingface](https://huggingface.co/OpenLemur) for a more detailed usage recipe.
+Please refer to our paper and code for more details:
+- [[Paper]()] Lemur: Harmonizing Natural Language and Code for Language Agents
+- [[Blog](https://www.xlang.ai/blog/openlemur)] Introducing Lemur: Open Foundation Models for Language Agents
 
 
 ## 🔥 News
+* **[11 October, 2023]:** 🎉 We released the research paper and codebase. We will continue updating this repository.
 * **[23 August, 2023]:** 🎉 We release the weights of [`OpenLemur/lemur-70b-v1`](https://huggingface.co/OpenLemur/lemur-70b-v1), and [`OpenLemur/lemur-70b-chat-v1`](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)! Check it out in [HuggingFace Hub](https://huggingface.co/OpenLemur).
 
+## Models
+We released our models on the HuggingFace Hub:
+* [OpenLemur/lemur-70b-v1](https://huggingface.co/OpenLemur/lemur-70b-v1)
+* [OpenLemur/lemur-70b-chat-v1](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)
 
 ## Table of Contents
 - [Quickstart](#quickstart)
   - [Setup](#setup)
-  - [Models](#models)
-  - [Inference](#inference)
-    - [Pretrained Model](#pretrained-model)
-    - [Supervised Fine-tuned Model](#supervised-fine-tuned-model)
-- [Acknowledgements](#acknowledgements)
+   - [Lemur-70B](#lemur-70b)
+   - [Lemur-70B-Chat](#lemur-70b-chat)
+- [Training](#training)
+- [Evaluation](#evaluation)
+  - [Foundational Abilities](#foundational-abilities)
+  - [Interactive Agent Skills](#interactive-agent-skills)
+      - [Deploy](#deploy)
+      - [MINT](#mint)
+      - [WebArena](#webarena)
+      - [InterCode](#intercode)
+      - [RobotCodeGen](#robotcodegen)
+
+
+
+## Why Lemur?
+Most existing open-source models specialize in either natural language or code. Lemur combines both strengths by:
+
+- Pretraining Llama-2-70B on a 90B token corpus with the 10:1 ratio of code to text and obtaining Lemur-70B-v1
+- Instruction tuning Lemur-70B-v1 on 300K examples covering both text and code and obtaining Lemur-70B-Chat-v1
+
+This two-stage training produces state-of-the-art performance averaged across diverse language and coding benchmarks, surpassing other available open-source models and narrowing the gap between open-source and commercial models on agent abilities.
 
 ## Quickstart
 
@@ -60,40 +80,24 @@ This repository is a minimal example to load Lemur models, run inference, and be
 First, we have to install all the libraries listed in `requirements.txt`
 
 ```bash
-pip install -r requirements.txt
+conda create -n xchat python=3.10
+conda activate xchat
+conda install pytorch==2.0.1 pytorch-cuda=11.8 -c pytorch -c nvidia
+conda install -c "nvidia/label/cuda-11.8.0" cuda-nvcc
+```
+Then, install the xchat package:
+```bash
+git clone git@github.com:OpenLemur/Lemur.git
+cd Lemur
+pip install -e .
 ```
 
-### Models
+### Lemur-70B
+For the base model lemur-70b-v1, you can use it in this way:
 
-Model cards are published on the HuggingFace Hub:
-
-* [OpenLemur/lemur-70b-v1](https://huggingface.co/OpenLemur/lemur-70b-v1)
-* [OpenLemur/lemur-70b-chat-v1](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)
-
-
-### Inference
-
-You can do inference like this:
-
-```python
-from transformers import AutoTokenizer, AutoModelForCausalLM
-
-# load model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained("OpenLemur/lemur-70b-v1")
-model = AutoModelForCausalLM.from_pretrained("OpenLemur/lemur-70b-v1", device_map="auto", load_in_8bit=True)
-
-prompt = "Your prompt here"
-input = tokenizer(prompt, return_tensors="pt")
-output = model.generate(**input, max_length=50, num_return_sequences=1)
-generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
-print(generated_text)
-```
-
-#### Pretrained Model
-
-The model is initialized from LLaMa-2 70B and further trained on ~100B text and code data (more details coming soon!). They should be prompted so that the expected answer is the natural continuation of the prompt.
-
-Here is a simple example of using our pretrained model:
+<details>
+<summary>Click me</summary>
+<p>
 
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -111,8 +115,8 @@ print(generated_text)
 # Code Generation Example
 prompt = """
 def factorial(n):
-    if n == 0:
-        return 1
+   if n == 0:
+      return 1
 """
 input = tokenizer(prompt, return_tensors="pt")
 output = model.generate(**input, max_length=200, num_return_sequences=1)
@@ -120,12 +124,17 @@ generated_code = tokenizer.decode(output[0], skip_special_tokens=True)
 print(generated_code)
 ```
 
+</p>
 
-### Supervised Fine-tuned Model
+</details>
 
-The model is initialized from `lemur-70b-v1` and continues trained on supervised fine-tuning data.
 
-Here is a simple example to use our supervised fine-tuned model:
+### Lemur-70B-Chat
+We instruction-finetune lemur-70b-v1 model with ChatML format to obtain lemur-70b-chat-v1. You can use lemur-70b-chat-v1 in this way:
+
+<details>
+<summary>Click me</summary>
+<p>
 
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -160,41 +169,67 @@ generated_code = tokenizer.decode(output[0], skip_special_tokens=True)
 print(generated_code)
 ```
 
+</p>
+
+</details>
+
+## Training
+
+<div align="center">
+  <img src="./assets/training.png">
+</div>
+
+
 ## Evaluation
+We evaluated Lemur across:
+- 8 language and code datasets like MMLU, BBH, GSM8K, HumanEval, and Spider to validate balanced capabilities
+- 13 interactive agent datasets to test skills like tool usage, adapting to feedback from environments or humans, and exploring partially observable digital or physical environments.
+
+<div align="center">
+  <img src="./assets/agent-scenarios.png">
+</div>
+
+<div align="center">
+  <img src="./assets/overall-perform.png">
+</div>
+
+### Foundational Abilities
 We build the evaluation suite based on [open-instruct](https://github.com/allenai/open-instruct). We will keep updating more tasks and models.
 
-### Tasks Table
+Currently, we support the following tasks:
+- [✅] [MMLU](./scripts/eval/mmlu.sh)
+- [✅] [BBH](./scripts/eval/bbh.sh)
+- [✅] [GSM8K](./scripts/eval/gsm8k.sh)
+- [✅] [HumanEval](./scripts/eval/human_eval.sh)
+- [✅] [MBPP](./scripts/eval/mbpp.sh)
+- [🚧] [Spider]()
+- [🚧] [MultiPL-E]()
+- [🚧] [DS-1000]()
+- [🚧] ...
 
-|                               | MMLU | BBH | GSM8K | HumanEval | MBPP | DS-1000 | MultiPL-E |
-|-------------------------------|------|-----|-------|-----------|------|---------|-----------|
-| Llama-2-{7,13,70}b            | ✅    | ✅   | ✅     | ✅         | ✅    | 🚧       | 🚧         |
-| CodeLlama-{7,13,34}b          | ✅    | ✅   | ✅     | ✅         | ✅    | 🚧       | 🚧         |
-| Lemur-70b-v1                  | ✅    | ✅   | ✅     | ✅         | ✅    | 🚧       | 🚧         |
-| Llama-2-{7,13,70}b-chat       | ✅    |     | ✅     | ✅         | ✅    | 🚧       | 🚧         |
-| CodeLlama-{7,13,34}b-Instruct | ✅    |     | ✅     | ✅         | ✅    | 🚧       | 🚧         |
-| Lemur-70b-chat-v1             | ✅    |     | ✅     | ✅         | ✅    | 🚧       | 🚧         |
+### Interactive Agent Skills
+We use the evaluation frameworks provided by [MINT](https://github.com/xingyaoww/mint-bench), [InterCode](https://github.com/princeton-nlp/intercode), and [WebArena](https://github.com/web-arena-x/webarena) to evaluate interactive agent skills.
 
-### Setup
-```bash
-conda create -n xchat python=3.10
-conda activate xchat
-conda install pytorch==2.0.1 pytorch-cuda=11.8 -c pytorch -c nvidia
-conda install -c "nvidia/label/cuda-11.8.0" cuda-nvcc
-```
-Then, install the `xchat` package:
+#### Deploy
+We use vLLM to serve the Lemur model. However, the official FastChat codebase does not yet support Lemur-Chat. Therefore, we provide a docker to serve vLLM for Lemur. Please refer to [vllm_lemur.sh](./scripts/deploy/vllm_lemur.sh) for more detailed information.
 
 ```bash
-git clone git@github.com:OpenLemur/Lemur.git
-cd Lemur
-pip install -e .
+bash scripts/deploy/vllm_lemur.sh
 ```
 
-### Run Evaluation
-Please find the evaluation scripts in `scripts/eval`. For example, to run the GSM8K evaluation, update the arguments in `scripts/eval/gsm.sh` and run:
+#### MINT
+We [fork MINT](https://github.com/OpenLemur/mint-bench) codebase to share the configs we used. Please refer to [this config folder](https://github.com/OpenLemur/mint-bench/tree/main/configs) for more details. Please run vllm with [`vllm_lemur.sh`](./scripts/deploy/vllm_lemur.sh) script.
 
-```bash
-bash scripts/eval/gsm.sh
-```
+#### WebArena
+We fork WebArena codebase to enable VLLM evaluation.
+🚧 Working in progress
+
+#### InterCode
+🚧 Working in progress
+
+#### RobotCodeGen
+🚧 Working in progress
+
 
 ## Acknowledgements
 
