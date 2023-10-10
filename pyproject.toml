@@ -1,0 +1,108 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xchat"
+version = "0.0.1"
+description = "An open platform for training, serving, and evaluating large language model based chatbots."
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+]
+
+dependencies = [
+    "accelerate>=0.21.0",
+    "bitsandbytes>=0.41.1",
+    "datasets",
+    "deepspeed>=0.10.0",
+    "einops",
+    "evaluate>=0.4.0",
+    "peft>=0.4.0",
+    "scipy",
+    "sentencepiece",
+    "tokenizers>=0.13.3",
+    "transformers==4.34.0",
+    "wandb",
+    "openai"
+]
+
+[project.optional-dependencies]
+dev = ["black==23.3.0", "pylint==2.8.2", "pre-commit"]
+all = ["xchat[dev]"]
+
+[tool.setuptools.packages.find]
+exclude = ["assets", "data*", "tests*"]
+
+[tool.wheel]
+exclude = ["assets", "data*", "tests*"]
+
+[tool.ruff]
+target-version = 'py38'
+select = [
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "D",  # pydocstyle
+    "E",  # Error
+    "F",  # pyflakes
+    "I",  # isort
+    "ISC", # flake8-implicit-str-concat
+    "N",  # pep8-naming
+    "PGH",  # pygrep-hooks
+    # "PTH", # flake8-use-pathlib
+    "Q",  # flake8-quotes
+    "S",  # bandit
+    "SIM",  # flake8-simplify
+    "TRY",  # tryceratops
+    "UP",  # pyupgrade
+    "W",  # Warning
+    "YTT", # flake8-2020
+]
+
+exclude = [
+    "migrations",
+    "__pycache__",
+    "manage.py",
+    "settings.py",
+    "env",
+    ".env",
+    "venv",
+    ".venv",
+]
+
+ignore = [
+    "B905",  # zip strict=True; remove once python <3.10 support is dropped.
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D200",
+    "D401",
+    "E402",
+    "E501",
+    "F401",
+    "TRY003",  # Avoid specifying messages outside exception class; overly strict, especially for ValueError
+    "S101", # Use of assert detected; overly strict, especially for tests
+]
+line-length = 120  # Must agree with Black
+
+[tool.ruff.flake8-bugbear]
+extend-immutable-calls = [
+    "chr",
+    "typer.Argument",
+    "typer.Option",
+]
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.pep8-naming]
+staticmethod-decorators = [
+    "pydantic.validator",
+    "pydantic.root_validator",
+]
