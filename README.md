@@ -9,8 +9,8 @@
    <a href="https://xlang.ai/blog/openlemur" target="_blank">
       <img alt="Blog" src="https://img.shields.io/badge/📖-Blog-red" />
    </a>
-  <a href="https://xlang.ai" target="_blank">
-      <img alt="Paper" src="https://img.shields.io/badge/📜-Paper(Coming soon)-purple" />
+  <a href="https://arxiv.org/abs/2310.06830" target="_blank">
+      <img alt="Paper" src="https://img.shields.io/badge/📜-Paper-purple" />
    </a>
    <a href="https://github.com/OpenLemur/lemur" target="_blank">
       <img alt="Stars" src="https://img.shields.io/github/stars/OpenLemur/lemur?style=social" />
@@ -36,7 +36,7 @@ As language models continue to evolve from conversational chatbots to functional
 </div>
 
 Please refer to our paper and code for more details:
-- [[Paper]()] Lemur: Harmonizing Natural Language and Code for Language Agents
+- [[Paper](https://arxiv.org/abs/2310.06830)] Lemur: Harmonizing Natural Language and Code for Language Agents
 - [[Blog](https://www.xlang.ai/blog/openlemur)] Introducing Lemur: Open Foundation Models for Language Agents
 
 
@@ -230,6 +230,18 @@ We fork WebArena codebase to enable VLLM evaluation.
 #### RobotCodeGen
 🚧 Working in progress
 
+## Citation
+
+```
+@misc{xu2023lemur,
+      title={Lemur: Harmonizing Natural Language and Code for Language Agents}, 
+      author={Yiheng Xu and Hongjin Su and Chen Xing and Boyu Mi and Qian Liu and Weijia Shi and Binyuan Hui and Fan Zhou and Yitao Liu and Tianbao Xie and Zhoujun Cheng and Siheng Zhao and Lingpeng Kong and Bailin Wang and Caiming Xiong and Tao Yu},
+      year={2023},
+      eprint={2310.06830},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
 
 ## Acknowledgements
 
