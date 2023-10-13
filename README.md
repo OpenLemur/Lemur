@@ -19,7 +19,7 @@
       <img alt="Open Issues" src="https://img.shields.io/github/issues-raw/OpenLemur/lemur" />
    </a>
    <a href="https://twitter.com/XLangAI" target="_blank">
-      <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/XLangAI" />
+      <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/XLangNLP" />
    </a>
    <a href="https://join.slack.com/t/xlanggroup/shared_invite/zt-20zb8hxas-eKSGJrbzHiPmrADCDX3_rQ" target="_blank">
       <img alt="Join Slack" src="https://img.shields.io/badge/Slack-join-blueviolet?logo=slack&amp" />
