@@ -42,10 +42,10 @@ Please refer to our paper and code for more details:
 
 ## 🔥 News
 * **[11 October, 2023]:** 🎉 We released the research paper and codebase. We will continue updating this repository.
-* **[23 August, 2023]:** 🎉 We release the weights of [`OpenLemur/lemur-70b-v1`](https://huggingface.co/OpenLemur/lemur-70b-v1), and [`OpenLemur/lemur-70b-chat-v1`](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)! Check it out in [HuggingFace Hub](https://huggingface.co/OpenLemur).
+* **[23 August, 2023]:** 🎉 We release the weights of [`OpenLemur/lemur-70b-v1`](https://huggingface.co/OpenLemur/lemur-70b-v1), and [`OpenLemur/lemur-70b-chat-v1`](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)! Check it out in [Hugging Face Hub](https://huggingface.co/OpenLemur).
 
 ## Models
-We released our models on the HuggingFace Hub:
+We released our models on the Hugging Face Hub:
 * [OpenLemur/lemur-70b-v1](https://huggingface.co/OpenLemur/lemur-70b-v1)
 * [OpenLemur/lemur-70b-chat-v1](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)
 
