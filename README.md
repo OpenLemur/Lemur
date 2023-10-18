@@ -41,7 +41,7 @@ Please refer to our paper and code for more details:
 
 
 ## 🔥 News
-* **[18 October, 2023]:** 🎉 We open-sourced [code for OpenAgents: An Open Platform for Language Agents in the Wild](https://github.com/xlang-ai/OpenAgents). 
+* **[18 October, 2023]:** 🎉 We open-sourced [code for OpenAgents](https://github.com/xlang-ai/OpenAgents): An Open Platform for Language Agents in the Wild. 
 * **[11 October, 2023]:** 🎉 We released the research paper and codebase. We will continue updating this repository.
 * **[23 August, 2023]:** 🎉 We released the weights of [`OpenLemur/lemur-70b-v1`](https://huggingface.co/OpenLemur/lemur-70b-v1), and [`OpenLemur/lemur-70b-chat-v1`](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)! Check it out in [HuggingFace Hub](https://huggingface.co/OpenLemur).
 
