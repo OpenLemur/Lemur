@@ -1,4 +1,4 @@
-# Lemur: Open Foundation Models for Language Agents
+# [Lemur: Open Foundation Models for Language Agents](https://arxiv.org/abs/2310.06830)
 
 <p align="center">
   <img src="https://i.imgur.com/Tga8kHW.jpeg" alt="Lemur">
@@ -18,8 +18,8 @@
    <a href="https://github.com/OpenLemur/lemur/issues" target="_blank">
       <img alt="Open Issues" src="https://img.shields.io/github/issues-raw/OpenLemur/lemur" />
    </a>
-   <a href="https://twitter.com/XLangAI" target="_blank">
-      <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/XLangNLP" />
+   <a href="https://twitter.com/XLangNLP" target="_blank">
+      <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/XLANG NLP Lab" />
    </a>
    <a href="https://join.slack.com/t/xlanggroup/shared_invite/zt-20zb8hxas-eKSGJrbzHiPmrADCDX3_rQ" target="_blank">
       <img alt="Join Slack" src="https://img.shields.io/badge/Slack-join-blueviolet?logo=slack&amp" />
@@ -41,8 +41,9 @@ Please refer to our paper and code for more details:
 
 
 ## 🔥 News
+* **[18 October, 2023]:** 🎉 We open-sourced [code for OpenAgents: An Open Platform for Language Agents in the Wild](https://github.com/xlang-ai/OpenAgents). 
 * **[11 October, 2023]:** 🎉 We released the research paper and codebase. We will continue updating this repository.
-* **[23 August, 2023]:** 🎉 We release the weights of [`OpenLemur/lemur-70b-v1`](https://huggingface.co/OpenLemur/lemur-70b-v1), and [`OpenLemur/lemur-70b-chat-v1`](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)! Check it out in [HuggingFace Hub](https://huggingface.co/OpenLemur).
+* **[23 August, 2023]:** 🎉 We released the weights of [`OpenLemur/lemur-70b-v1`](https://huggingface.co/OpenLemur/lemur-70b-v1), and [`OpenLemur/lemur-70b-chat-v1`](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)! Check it out in [HuggingFace Hub](https://huggingface.co/OpenLemur).
 
 ## Models
 We released our models on the HuggingFace Hub:
@@ -231,7 +232,7 @@ We fork WebArena codebase to enable VLLM evaluation.
 🚧 Working in progress
 
 ## Citation
-
+If you find our work helpful, please cite us:
 ```
 @misc{xu2023lemur,
       title={Lemur: Harmonizing Natural Language and Code for Language Agents}, 
