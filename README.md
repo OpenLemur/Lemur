@@ -51,19 +51,26 @@ We released our models on the HuggingFace Hub:
 * [OpenLemur/lemur-70b-chat-v1](https://huggingface.co/OpenLemur/lemur-70b-chat-v1)
 
 ## Table of Contents
-- [Quickstart](#quickstart)
-  - [Setup](#setup)
-   - [Lemur-70B](#lemur-70b)
-   - [Lemur-70B-Chat](#lemur-70b-chat)
-- [Training](#training)
-- [Evaluation](#evaluation)
-  - [Foundational Abilities](#foundational-abilities)
-  - [Interactive Agent Skills](#interactive-agent-skills)
+- [Lemur: Open Foundation Models for Language Agents](#lemur-open-foundation-models-for-language-agents)
+  - [🔥 News](#-news)
+  - [Models](#models)
+  - [Table of Contents](#table-of-contents)
+  - [Why Lemur?](#why-lemur)
+  - [Quickstart](#quickstart)
+    - [Setup](#setup)
+    - [Lemur-70B](#lemur-70b)
+    - [Lemur-70B-Chat](#lemur-70b-chat)
+  - [Training](#training)
+  - [Evaluation](#evaluation)
+    - [Foundational Abilities](#foundational-abilities)
+    - [Interactive Agent Skills](#interactive-agent-skills)
       - [Deploy](#deploy)
       - [MINT](#mint)
       - [WebArena](#webarena)
       - [InterCode](#intercode)
       - [RobotCodeGen](#robotcodegen)
+  - [Citation](#citation)
+  - [Acknowledgements](#acknowledgements)
 
 
 
@@ -222,8 +229,7 @@ bash scripts/deploy/vllm_lemur.sh
 We [fork MINT](https://github.com/OpenLemur/mint-bench) codebase to share the configs we used. Please refer to [this config folder](https://github.com/OpenLemur/mint-bench/tree/main/configs) for more details. Please run vllm with [`vllm_lemur.sh`](./scripts/deploy/vllm_lemur.sh) script.
 
 #### WebArena
-We fork WebArena codebase to enable VLLM evaluation.
-🚧 Working in progress
+We [fork WebArena](https://github.com/OpenLemur/webarena) codebase to enable vLLM evaluation. To run the evaluation on WebArena, please refer to our [forked WebArena codebase](https://github.com/OpenLemur/webarena).
 
 #### InterCode
 🚧 Working in progress
