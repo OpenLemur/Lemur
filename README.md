@@ -68,7 +68,6 @@ We released our models on the HuggingFace Hub:
       - [MINT](#mint)
       - [WebArena](#webarena)
       - [InterCode](#intercode)
-      - [RobotCodeGen](#robotcodegen)
   - [Citation](#citation)
   - [Acknowledgements](#acknowledgements)
 
@@ -232,10 +231,8 @@ We [fork MINT](https://github.com/OpenLemur/mint-bench) codebase to share the co
 We [fork WebArena](https://github.com/OpenLemur/webarena) codebase to enable vLLM evaluation. To run the evaluation on WebArena, please refer to our [forked WebArena codebase](https://github.com/OpenLemur/webarena).
 
 #### InterCode
-🚧 Working in progress
+We [fork InterCode](https://github.com/OpenLemur/intercode) codebase and do modifications to enable Lemur evaluation. Please refer to [this script folder](https://github.com/OpenLemur/intercode/tree/master/scripts) for more details. Please run `text-generation-inference` with [`tgi_lemur.sh`](scripts/deploy/tgi_lemur.sh) script.
 
-#### RobotCodeGen
-🚧 Working in progress
 
 ## Citation
 If you find our work helpful, please cite us:
